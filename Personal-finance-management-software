@@ -1,0 +1,31 @@
+class PersonalFinanceManager:
+    def __init__(self):
+        self.balance = 0
+        self.transactions = []
+
+    def add_income(self, amount, description):
+        self.balance += amount
+        self.transactions.append((amount, description, "Income"))
+
+    def add_expense(self, amount, description):
+        self.balance -= amount
+        self.transactions.append((amount, description, "Expense"))
+
+    def get_balance(self):
+        return self.balance
+
+    def view_transactions(self):
+        for transaction in self.transactions:
+            print(f"{transaction[2]} - ${transaction[0]}: {transaction[1]}")
+
+# Example usage:
+if __name__ == "__main__":
+    finance_manager = PersonalFinanceManager()
+    finance_manager.add_income(1000, "Salary")
+    finance_manager.add_expense(300, "Rent")
+    finance_manager.add_expense(50, "Groceries")
+    finance_manager.add_income(200, "Freelance work")
+
+    print("Current Balance: $", finance_manager.get_balance())
+    print("Transactions:")
+    finance_manager.view_transactions()
